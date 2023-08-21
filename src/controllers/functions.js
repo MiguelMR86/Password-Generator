@@ -23,16 +23,18 @@ export const GeneratePassword = (length, includes) => {
 const handelIncludes = (includes) => {
     let result = '';
     let characters = '';
-    const symbols = '!@#$%^&*()';
-    const numbers = '0123456789';
-    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const lowercase = 'abcdefghijklmnopqrstuvwxyz'
-    const similar = 'il1Lo0O'
+    const includesChars = {
+        symbols: '!@#$%^&*()',
+        numbers: '0123456789',
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        similar: 'il1Lo0O'
+    }
     
     Object.keys(includes).forEach(key => {
         if (includes[key] === true) {
-            characters += eval(key)
-            result += eval(key).charAt(Math.floor(Math.random() * eval(key).length))
+            characters += includesChars[key]
+            result += includesChars[key].charAt(Math.floor(Math.random() * eval(key).length))
         }
     })
 
